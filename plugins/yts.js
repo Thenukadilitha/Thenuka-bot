@@ -11,7 +11,7 @@ cmd(
     filename: __filename,
   },
   async (
-    danuwa,
+    thenuka,
     mek,
     m,
     {
@@ -44,11 +44,11 @@ Your youtube search results
 ${formattedResults}
    `;
 
-      await danuwa.sendMessage(
+      await thenuka.sendMessage(
         from,
         {
           image: {
-            url: "https://github.com/DANUWA-MD/DANUWA-MD/blob/main/images/yts.png?raw=true",
+            url: "https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg?raw=true",
           },
           caption,
         },
