@@ -6,17 +6,17 @@
   "success_url": "/",
 
   "env": {
-    "SESSION_ID": {
+    "FZlChDbL#J6a_qUf0VLQJIiu3k87Z3igz_z4KYtnCKQoDCuXtMzM": {
       "description": "Put the session-id here.",
       "required": true
     },  
 
-    "ALIVE_IMG": {
+    "https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg": {
       "description": "Put your alive img here.",
       "required": true
     },
     
-    "ALIVE_MSG": {
+    "Hi I am Thenuka bot": {
       "description": "Put your alive msg here.",
       "required": true
     }   
