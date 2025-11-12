@@ -1,12 +1,12 @@
 {
-  "name": "THENUKA-BOT",
+  "name": "Thenuka",
   "version": "1.0.0",
   "description": "A Powerfull Whatsapp Bot",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name THENUKA-BOT",
-    "stop": "pm2 stop THENUKA-BOT",
-    "restart": "pm2 restart THENUKA-BOT"
+    "start": "pm2 start index.js --deep-monitoring --attach --name Thenuka",
+    "stop": "pm2 stop Thenuka",
+    "restart": "pm2 restart Thenuka"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.21",
