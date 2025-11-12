@@ -89,7 +89,7 @@ async function connectToWA() {
 
       const up = `thenuka-MD connected ✅\n\nPREFIX: ${prefix}`;
       await thenuka.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
-        image: { url: `https://https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg` },
+        image: { url: `https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg` },
         caption: up
       });
 
