@@ -104,8 +104,11 @@ _*🌟 To view commands, type the command and category number/name, e.g.: !menu 
 
 > *𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 your Thenuka bot*`;
 
-        // Send the menu message
-        await conn.sendMessage(from, { image: { url:https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg?raw=true config.MENU_IMG}, caption: desc }, { quoted: mek });
+        // FIX: The original code had a syntax error here. 
+        // We use the hardcoded URL you provided, assuming you want to override config.MENU_IMG
+        const menuImageUrl = "https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg?raw=true";
+        
+        await conn.sendMessage(from, { image: { url: menuImageUrl }, caption: desc }, { quoted: mek });
 
     } catch (e) {
         console.error("Menu command error:", e);
