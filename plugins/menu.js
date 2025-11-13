@@ -21,43 +21,7 @@ cmd({
     desc: "bot's commands",
     react: "📜",
     category: "main"
- async (
-    thenuka,
-    mek,
-    m,
-    {
-      from,
-      reply
-    }
-  ) => {
-    try {
-      const categories = {};
-
-      for (let cmdName in commands) {
-        const cmdData = commands[cmdName];
-        const cat = cmdData.category?.toLowerCase() || "other";
-        if (!categories[cat]) categories[cat] = [];
-        categories[cat].push({
-          pattern: cmdData.pattern,
-          desc: cmdData.desc || "No description"
-        });
-      }
-
-      let menuText = "📋 *Available Commands:*\n";
-
-      for (const [cat, cmds] of Object.entries(categories)) {
-        menuText += `\n📂 *${cat.toUpperCase()}*\n`;
-        cmds.forEach(c => {
-          menuText += `- .${c.pattern} : ${c.desc}\n`;
-        });
-      }
-
-      await reply(menuText.trim());
-    } catch (err) {
-      console.error(err);
-      reply("❌ Error generating menu.");
-    }
-  
+ 
 
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
