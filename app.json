@@ -1,0 +1,31 @@
+{
+  "name": "THENUKA-BOT",
+  "description": "Javascript WhatsApp bot made by Thenuka dilitha",
+  "logo": "https://raw.githubusercontent.com/Thenukadilitha/Thenuka-bot/refs/heads/main/Images/IMG-20251020-WA0002.jpg",
+  "keywords": ["THENUKA-BOT"],
+  "success_url": "/",
+
+  "env": {
+    "SESSION_ID": {
+      "description": "Put the session-id here.",
+      "required": true
+    },  
+
+    "ALIVE_IMG": {
+      "description": "Put your alive img here.",
+      "required": true
+    },
+    
+    "ALIVE_MSG": {
+      "description": "Put your alive msg here.",
+      "required": true
+    }   
+},
+
+     "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        }
+     ],
+  "stack": "heroku-24"
+}
