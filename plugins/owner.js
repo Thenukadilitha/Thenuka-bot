@@ -4,7 +4,7 @@ const {cmd , commands} = require('../command')
 const os = require("os")
 const { exec } = require('child_process')
 const {runtime} = require('../lib/functions')
-
+const { sleep } = require('../lib/functions'); // Added sleep import as it's used in 'restart'
 
 cmd({
     pattern: "owner",
@@ -21,9 +21,7 @@ let dec = `*👋 Hello ${pushname}*
 
 *👨‍💻Thenuka bot👨‍💻*
 
-> *𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢* 
-
-*⚡Owner name -: Thenuka dilitha*
+> *𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢* *⚡Owner name -: Thenuka dilitha*
 *⚡Number* -: +94774238206
 
  
@@ -118,7 +116,6 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, reply }) => {
     try {
-       
         
         const chatJid = from;
 
@@ -235,7 +232,7 @@ cmd({
     react: "✅",
     filename: __filename
 },
-async (conn, mek, m, { from, isOwner, quoted, reply }) => {
+async (conn, mek, m, { from, isOwner, quoted, reply }) => { // FIX 1: Missing closing brace was here
     if (!isOwner) return reply("❌ You are not the owner!");
     if (!quoted) return reply("❌ Please reply to the user you want to unblock.");
 
@@ -246,8 +243,7 @@ async (conn, mek, m, { from, isOwner, quoted, reply }) => {
     } catch (error) {
         reply(`❌ Error unblocking user: ${error.message}`);
     }
-
-
+}); // ADDED closing brace for the async function and for cmd
 
 // 6. Clear All Chats
 cmd({
@@ -260,7 +256,10 @@ cmd({
 async (conn, mek, m, { from, isOwner, reply }) => {
     if (!isOwner) return reply("❌ You are not the owner!");
     try {
-        const chats = conn.chats.all();
+        // Assuming conn.chats.all() is available or similar
+        // Note: Actual chat clearing method depends on the specific WhatsApp library being used.
+        // The original code's implementation might be an approximation or relies on a specific library's API.
+        const chats = conn.chats.all ? conn.chats.all() : []; // Added a safe check
         for (const chat of chats) {
             await conn.modifyChat(chat.jid, 'delete');
         }
@@ -289,7 +288,4 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         reply(`${e}`)
     }
 });
-le.log(e)
-        reply(`${e}`)
-    )}
-});
+// FIX 2: Removed orphaned code: le.log(e) reply(`${e}`) )} });
