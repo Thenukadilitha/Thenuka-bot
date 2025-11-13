@@ -7,6 +7,7 @@ const {
   fetchLatestBaileysVersion,
   Browsers
 } = require('@whiskeysockets/baileys');
+const config = require('./config'); 
 
 const fs = require('fs');
 const P = require('pino');
