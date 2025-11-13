@@ -1,4 +1,4 @@
-const {
+Const {
   default: makeWASocket,
   useMultiFileAuthState,
   DisconnectReason,
@@ -7,7 +7,6 @@ const {
   fetchLatestBaileysVersion,
   Browsers
 } = require('@whiskeysockets/baileys');
-const config = require('./config'); 
 
 const fs = require('fs');
 const P = require('pino');
@@ -16,7 +15,8 @@ const axios = require('axios');
 const path = require('path');
 const qrcode = require('qrcode-terminal');
 
-const config = require('./config');
+// NOTE: This requires the config file successfully
+const config = require('./config'); 
 const { sms, downloadMediaMessage } = require('./lib/msg');
 const {
   getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson
@@ -94,11 +94,15 @@ async function connectToWA() {
         caption: up
       });
 
+      // --- FIX APPLIED HERE ---
+      // We are now calling the required plugin file as a function and passing 'config'
       fs.readdirSync("./plugins/").forEach((plugin) => {
         if (path.extname(plugin).toLowerCase() === ".js") {
-          require(`./plugins/${plugin}`);
+          // Pass config, prefix, and ownerNumber to the plugin file's exported function
+          require(`./plugins/${plugin}`)(config, prefix, ownerNumber); 
         }
       });
+      // --- END FIX ---
     }
   });
 
