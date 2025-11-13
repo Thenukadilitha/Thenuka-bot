@@ -1,62 +1,41 @@
-const { cmd } = require("../command");
-const yts = require("yt-search");
 
-cmd(
-  {
+
+const config = require('../config')
+const l = console.log
+const { cmd, commands } = require('../command')
+const dl = require('@bochilteam/scraper')  
+const ytdl = require('yt-search');
+const fs = require('fs-extra')
+var videotime = 60000 // 1000 min
+const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require('../lib/functions')
+cmd({
     pattern: "yts",
-    alias: ["yts", "youtubesearch"],
+    alias: ["ytsearch"],
+    use: '.yts malvin xmd bot',
     react: "🔎",
-    desc: "Search YouTube videos",
+    desc: "Search and get details from youtube.",
     category: "search",
-    filename: __filename,
-  },
-  async (
-    thenuka,
-    mek,
-    m,
-    {
-      from,
-      quoted,
-      q,
-      reply,
-    }
-  ) => {
-    try {
-      if (!q) return reply("*Please provide a search query!* 🔍");
+    filename: __filename
 
-      reply("*Searching YouTube for you...* ⌛");
+},
 
-      const search = await yts(q);
-
-      if (!search || !search.all || search.all.length === 0) {
-        return reply("*No results found on YouTube.* ☹️");
-      }
-
-      const results = search.videos.slice(0, 10); 
-      let formattedResults = results.map((v, i) => (
-        `🎬 *${i + 1}. ${v.title}*\n📅 ${v.ago} | ⌛ ${v.timestamp} | 👁️ ${v.views.toLocaleString()} views\n🔗 ${v.url}`
-      )).join("\n\n");
-
-      const caption = `  
-Your youtube search results
-─────────────────────────
-🔎 *Query*: ${q}
-${formattedResults}
-   `;
-
-      await thenuka.sendMessage(
-        from,
-        {
-          image: {
-            url: "https://github.com/Thenukadilitha/Thenuka-bot/blob/main/Images/IMG-20251020-WA0002.jpg?raw=true",
-          },
-          caption,
-        },
-        { quoted: mek }
-      );
-    } catch (err) {
-      console.error(err);
-      reply("*An error occurred while searching YouTube.* ❌");
-    }
-  }
-);
+async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+if (!q) return reply('*Please give me words to search*')
+try {
+let yts = require("yt-search")
+var arama = await yts(q);
+} catch(e) {
+    l(e)
+return await conn.sendMessage(from , { text: '*Error !!*' }, { quoted: mek } )
+}
+var mesaj = '';
+arama.all.map((video) => {
+mesaj += ' *🖲️' + video.title + '*\n🔗 ' + video.url + '\n\n'
+});
+await conn.sendMessage(from , { text:  mesaj }, { quoted: mek } )
+} catch (e) {
+    l(e)
+  reply('*Error !!*')
+}
+});
