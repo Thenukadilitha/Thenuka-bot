@@ -10,7 +10,7 @@
  * @description : A Multi-functional whatsapp bot script.
  * @version 3.0.0
  **/
-
+const config = require('../config'); 
 const {readEnv} = require('../config')
 const {cmd , commands} = require('../command')
 const os = require("os")
