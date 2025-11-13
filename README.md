@@ -1,1 +1,0 @@
-# Thenuka-bot
