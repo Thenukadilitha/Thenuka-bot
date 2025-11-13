@@ -246,7 +246,7 @@ async (conn, mek, m, { from, isOwner, quoted, reply }) => {
     } catch (error) {
         reply(`❌ Error unblocking user: ${error.message}`);
     }
-);
+
 
 
 // 6. Clear All Chats
